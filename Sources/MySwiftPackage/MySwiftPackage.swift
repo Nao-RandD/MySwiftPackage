@@ -14,7 +14,7 @@ public struct MySwiftPackage {
         let openAPI = OpenAISwift(authToken: token)
         do {
             let result = try await openAPI.sendCompletion(with: "A random emoji")
-            return result.data?[0].text ?? "nilだったよ"
+            return result.choices?.first?.text ?? "nilだったよ"
         } catch {
             return "失敗：\(error.localizedDescription)"
         }
